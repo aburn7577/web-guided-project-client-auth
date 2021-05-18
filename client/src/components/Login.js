@@ -4,8 +4,8 @@ import axios from 'axios';
 class Login extends React.Component {
   state = {
     credentials: {
-      username: '',
-      password: ''
+      username: 'lambda',
+      password: 'school'
     }
   };
 
@@ -26,7 +26,7 @@ class Login extends React.Component {
     //4. console.log the error if returned
     axios.post('http://localhost:5000/api/login', this.state.credentials)
       .then(res=>{
-        console.log(res);
+        console.log(res.data);
       })
       .catch(err=>{
         console.log(err);
