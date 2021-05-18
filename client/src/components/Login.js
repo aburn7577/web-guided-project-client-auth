@@ -24,6 +24,13 @@ class Login extends React.Component {
     //2. pass in our username and password
     //3. console.log the token that is returned.
     //4. console.log the error if returned
+    axios.post('http://localhost:5000/api/login', this.state.credentials)
+      .then(res=>{
+        console.log(res);
+      })
+      .catch(err=>{
+        console.log(err);
+      });
   };
 
   render() {
