@@ -8,8 +8,12 @@ import axios from 'axios';
 
 function App() {
   const logout = () => {
+    const token = localStorage.getItem('token');
+    
     axios.post('http://localhost:5000/logout', {
-      
+      header: {
+        authorization: token
+      }
     })
   };
 
