@@ -32,7 +32,7 @@ function App() {
             <Link onClick={logout}>Logout</Link>
           </li>
           <li>
-            {this.state.authenicated && <Link to="/protected">Protected Page</Link>}
+            {localStorage.getItem("token") && <Link to="/protected">Protected Page</Link>}
           </li>
         </ul>
 
