@@ -20,7 +20,10 @@ class Login extends React.Component {
 
   login = e => {
     e.preventDefault();
-    
+    //1. make an axios call on the localhost:5000/api/login
+    //2. pass in our username and password
+    //3. console.log the token that is returned.
+    //4. console.log the error if returned
   };
 
   render() {
