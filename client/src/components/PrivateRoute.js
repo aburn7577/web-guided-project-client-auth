@@ -8,8 +8,10 @@ import {Route, Redirect } from 'react-router-dom';
   3. It checks if the user is authenticated, if they are, it renders the “component” prop. If not, it redirects the user to /login.
 */
 
-const PrivateRoute = (props) => {
-    return <Route {...props}/>;
+const PrivateRoute = ({component, ...rest}) => {
+    return <Route {...props} render={()=>{
+
+    }}/>;
 }
 
 export default PrivateRoute;
