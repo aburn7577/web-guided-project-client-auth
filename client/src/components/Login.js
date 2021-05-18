@@ -20,11 +20,10 @@ class Login extends React.Component {
 
   login = e => {
     e.preventDefault();
+    
   };
 
   render() {
-    console.log(this.state);
-    
     return (
       <div>
         <form onSubmit={this.login}>
