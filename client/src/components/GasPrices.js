@@ -18,6 +18,7 @@ class GasPrices extends React.Component {
       .get('http://localhost:5000/api/data')
       .then(res=>{
         this.setState({
+          ...this.state,
           gasPrices: res.data.data
         });
       })
