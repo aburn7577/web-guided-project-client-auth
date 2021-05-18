@@ -7,13 +7,13 @@ import GasPrices from './components/GasPrices';
 import { axiosWithAuth } from './utils/axiosWithAuth';
 
 
-function App(props) {
-  
+function App() {
+
   const logout = () => {
     axiosWithAuth().post('http://localhost:5000/api/logout')
     .then(res=> {
-      console.log(props);
       localStorage.removeItem("token");
+      console.log(window);
     })
     .catch(err=> {
       console.log(err);
