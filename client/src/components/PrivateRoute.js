@@ -9,8 +9,8 @@ import {Route, Redirect } from 'react-router-dom';
 */
 
 const PrivateRoute = ({component, ...rest}) => {
-    return <Route {...rest} render={()=>{
-
+    return <Route {...rest} render={(props)=>{
+        return <component {...props}/>
     }}/>;
 }
 
