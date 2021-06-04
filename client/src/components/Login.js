@@ -20,9 +20,24 @@ class Login extends React.Component {
 
   login = e => {
     e.preventDefault();
+    // console.log('clicked Login')
+    //1. use Axios to do a post request
+    axios.post('http://localhost:5000/api/login', this.state.credentials)
+      .then(res => {
+        //2. if successful, console.log token
+        // console.log('AB: login.js: login.post: res', res)
+        localStorage.setItem('token', res.data.payload)
+        // console.log('AB: login.js:login.post: props', this.props)
+        this.props.history.push('/protected')
+      })
+      //3. if unsuccessful, show error
+      .catch(err => {
+        console.log('AB:login.js: login.get: err.message', err.message)
+      })
   };
 
   render() {
+    // console.log("AB: Login.js: credentials", this.state.credentials)
     return (
       <div>
         <form onSubmit={this.login}>

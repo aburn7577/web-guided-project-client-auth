@@ -4,14 +4,20 @@ import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 import Login from './components/Login';
 import GasPrices from './components/GasPrices';
 
-import axios from 'axios';
+import { axiosWithAuth } from './utils/axiosWithAuth'
+import PrivateRoute from './components/PrivateRoute';
 
 function App() {
   const logout = () => {
-    
-  };
-
-
+    axiosWithAuth().post('logout')
+      .then(res => {
+        localStorage.removeItem('token')
+        window.location.href = '/login'
+      })
+      .catch(err => {
+        console.log('error', err.message)
+      })
+  }
   return (
     <Router>
       <div className="App">
@@ -27,7 +33,7 @@ function App() {
           </li>
         </ul>
         <Switch>
-          <Route exact path="/protected" component={GasPrices} />
+          <PrivateRoute exact path="/protected" component={GasPrices} />
           <Route path="/login" component={Login} />
           <Route component={Login} />
         </Switch>
@@ -36,4 +42,4 @@ function App() {
   );
 }
 
-export default App;
+export default App

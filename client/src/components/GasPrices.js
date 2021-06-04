@@ -2,6 +2,8 @@ import React from 'react';
 import moment from 'moment';
 import Loader from 'react-loader-spinner';
 
+import { axiosWithAuth } from '../utils/axiosWithAuth'
+
 class GasPrices extends React.Component {
   state = {
     gasPrices: []
@@ -11,7 +13,19 @@ class GasPrices extends React.Component {
     this.getData();
   }
 
-  getData = () => {};
+  getData = () => {
+    axiosWithAuth().get('data')
+      .then(res => {
+        console.log('ab: gasprices.js: getData: res', res)
+        this.setState({
+          gasPrices: res.data.data
+        })
+
+      })
+      .catch(err => {
+        console.log('error', err.message)
+      })
+  };
 
   formatData = () => {
     const formattedData = [];
